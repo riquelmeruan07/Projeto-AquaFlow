@@ -1,0 +1,61 @@
+{
+    "phdeoliveira14@gmail.com": {
+        "Nome": "Pedro",
+        "Senha": "P97hol"
+    },
+    "mv02sf@gmail.com": {
+        "Nome": "Marcos",
+        "Senha": "Ph123",
+        "Status": "Cliente",
+        "compras": [
+            {
+                "produto": "Santa Maria",
+                "Quantidade": 2,
+                "Valor Unitário": "R$13.00",
+                "Valor Total": "R$26.00",
+                "data": "18/10/2025"
+            }
+        ]
+    },
+    "milenaflorencio30@gmail.com": {
+        "Nome": "Milena Florêncio",
+        "Senha": "Mil23",
+        "Status": "Cliente",
+        "compras": [
+            {
+                "Produto": "Santa joana",
+                "Quantidade": 1,
+                "Valor Unitário": "R$12.00",
+                "Valor Total": "R$12.00",
+                "Data": "18/10/2025"
+            }
+        ]
+    },
+    "paulopedro45@gmail.com": {
+        "Nome": "Paulo",
+        "Senha": "Ph123",
+        "Status": "Cliente",
+        "compras": [
+            {
+                "Produto": "Prata do Vale",
+                "Quantidade": 2,
+                "Valor Unitário": "R$14.00",
+                "Valor Total": "R$28.00",
+                "Data": "18/10/2025"
+            }
+        ]
+    },
+    "rogerioalvesservo@gmail.com": {
+        "Nome": "Rogério Alves",
+        "Senha": "Ph123",
+        "Status": "Entregador",
+        "Entregas": [
+            {
+                "Produto": "Prata do Vale",
+                "Quantidade": 4,
+                "Data": "19/10/2025",
+                "Cliente": "Sem cliente"
+            }
+        ]
+    }
+}
