@@ -1,0 +1,17 @@
+{
+    "Santa Maria": {
+        "Quantidade no estoque": "15",
+        "Valor do produto": "R$13.00",
+        "Data de validade": "29/10/2027"
+    },
+    "Santa joana": {
+        "Quantidade no estoque": "29",
+        "Valor do produto": "R$12.00",
+        "Data de validade": "20/10/2028"
+    },
+    "Prata do Vale": {
+        "Quantidade no estoque": "24",
+        "Valor do produto": "R$14.00",
+        "Data de validade": "29/10/2027"
+    }
+}
