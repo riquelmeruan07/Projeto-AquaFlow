@@ -25,3 +25,8 @@ RF010 - Interface do Sistema
 RF011 - Atualização Semanal dos Rankings                                            
 RF012 - Metas Diárias para os Entregadores                                          
 RF013 - Aviso sobre Baixo Estoque
+
+## PRINCIPAIS FUNÇÕES DO CÓDIGO 
+
+### AUTENTICAÇÃO DE USUÁRIO
+
