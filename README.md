@@ -29,4 +29,20 @@ RF013 - Aviso sobre Baixo Estoque
 ## PRINCIPAIS FUNÇÕES DO CÓDIGO 
 
 ### AUTENTICAÇÃO DE USUÁRIO
+- `MenuInicial()`: Menu inicial com opções de login e cadastro.
+- `cadastrar()`: Cadastro de usuários com validação de e-mail, senha e nome.
+- `login()`: Login do usuário
 
+### Configurações da conta
+
+- `configuracoes(email_logado)`: Acessa as configurações da conta do usuário.
+- `MostraDados(email)`: Exibe informações da conta e pergunta se ele deseja mudar algo.
+- `AtualizarDados(email_atual)`: Atualiza os dados do usuário
+- `DeletarConta(email)`: Exclui a conta após a confirmação da senha do usuário
+
+
+### Validações e Utilidades
+
+- `limpaTerminal()`: Limpa a tela do terminal conforme o sistema operacional.
+- `validaemail`: Verifica se o e-mail possui domínio permitido (`@gmail.com`, `@ufrpe.br`).
+- `validasenha`: Valida senhas com base em regras de segurança (mín. 1 número, 1 maiúscula, e entre 4 a 8 caracteres).
