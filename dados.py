@@ -115,7 +115,11 @@ def Rankings(email_usuario):
     # Percorre todos os usuários
     for info in dados.values():
         if "compras" in info and info["compras"]:
-            total_gasto = sum(float(compra["Valor Total"]) for compra in info["compras"])
+            total_gasto = sum(
+                float(compra["Valor Total"].replace("R$", "").replace(",", "."))
+                for compra in info["compras"]
+            )
+            # Adiciona o usuário ao ranking
             ranking.append((info["Nome"], total_gasto))
 
     # Ordena do maior para o menor gasto
