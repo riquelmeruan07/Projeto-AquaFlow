@@ -9,12 +9,15 @@
         "Status": "Cliente",
         "compras": [
             {
-                "produto": "Santa Maria",
+                "Produto": "Santa Maria",
                 "Quantidade": 2,
                 "Valor Unitário": "R$13.00",
                 "Valor Total": "R$26.00",
-                "data": "18/10/2025"
+                "Data": "18/10/2025"
             }
+        ],
+        "Bonificacoes": [
+            "2 Santa Joana - 31/10/2025"
         ]
     },
     "milenaflorencio30@gmail.com": {
@@ -32,7 +35,7 @@
         ]
     },
     "paulopedro45@gmail.com": {
-        "Nome": "Paulo",
+        "Nome": "Paulo Pedro",
         "Senha": "Ph123",
         "Status": "Cliente",
         "compras": [
@@ -41,21 +44,21 @@
                 "Quantidade": 2,
                 "Valor Unitário": "R$14.00",
                 "Valor Total": "R$28.00",
-                "Data": "18/10/2025"
+                "Data": "31/10/2025"
             }
+        ],
+        "Bonificacoes": [
+            "2 Santa Joana - 31/10/2025"
         ]
     },
     "rogerioalvesservo@gmail.com": {
-        "Nome": "Rogério Alves",
+        "Nome": "Rogério Alves de Oliveira",
         "Senha": "Ph123",
         "Status": "Entregador",
-        "Entregas": [
-            {
-                "Produto": "Prata do Vale",
-                "Quantidade": 4,
-                "Data": "19/10/2025",
-                "Cliente": "Sem cliente"
-            }
+        "Entregas": [],
+        "Ultimo Mês bonificado": "2025-10",
+        "Bonificacoes": [
+            "R$200 - 31/10/2025"
         ]
     }
 }
