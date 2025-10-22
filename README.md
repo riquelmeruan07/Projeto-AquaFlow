@@ -46,3 +46,25 @@ RF013 - Aviso sobre Baixo Estoque
 - `limpaTerminal()`: Limpa a tela do terminal conforme o sistema operacional.
 - `validaemail`: Verifica se o e-mail possui domínio permitido (`@gmail.com`, `@ufrpe.br`).
 - `validasenha`: Valida senhas com base em regras de segurança (mín. 1 número, 1 maiúscula, e entre 4 a 8 caracteres).
+- `validastatus()`: Verifica se o usuário é um Cliente ou Entregador.
+- `validaproduto()`: Verifica se o o produto foii inserido corretamente
+- `validaqtd()`: Valida a quantidade que o usuário digitou
+- `validavalor()`: Valida o valor que foi adiicionado para o produto
+- `ValidaData()`: Valida a data de validade do produto
+
+## TECNOLOGIAS UTILIZADAS
+
+| Tecnologias         | Utilidade |
+|---------------------|-----------|
+| Python 3.13.7       | Linguagem principal de desenvolvimento do sistema. |
+| Draw.io             | Design de fluxogramas. |
+| Json                | Armazenamento de dados |
+
+## BIBLIOTECAS
+
+| Biblioteca | Utilidade |
+|------------|-----------|
+| `datetime` | Manipulação e formatação de datas e horários. |
+| `os`       | Interação com o sistema operacional (pastas, arquivos, terminal). |
+| `time`     | Controle de tempo, delays e marcação temporal. |
+| `sys`      |Interação com o ambiente operacional do Python |
