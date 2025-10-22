@@ -15,8 +15,8 @@ def validanome():
         if not temp.isalpha():
             print('\033[1;31mERRO! Digite um nome válido (somente letras)\033[m')
             continue
-        else:
-            return nome.strip(' ')
+        
+        return nome
 def validasenha():
     #Função para inserir a senha e validá-la
     while True:
@@ -43,7 +43,8 @@ def validasenha():
 def verificaemail(email):
     return email.endswith('@gmail.com') or email.endswith('@ufrpe.br')
 
-def validaemail(): 
+def validaemail():
+    #Insere o email e faz suas validações 
     while True:
         email = input("Digite o email: ").strip().lower()
         if email == '':
@@ -75,8 +76,8 @@ def validaproduto():
         if not temp.isalpha():
             print('\033[31mERRO! Digite um nome válido (somente letras)\033[m')
             continue
-        else:
-            return nome.strip(' ')
+    
+        return nome
         
 def validaqtd():
     while True:
@@ -87,12 +88,11 @@ def validaqtd():
         if not quantia.isdigit():
             print('Digite apenas números')
             continue
-        
         if int(quantia) <= 0:
             print('Não pode colocar uma quantia menor ou igual a zero.')
             continue
-        else:
-            return quantia
+        
+        return quantia
 
 def ValidaValor():
     while True:
@@ -103,7 +103,6 @@ def ValidaValor():
         if not valor.isdigit():
             print('Digite apenas números')
             continue
-        
         valor_prod = float(valor)
         if valor_prod <= 0:
             print('Não pode colocar uma valor menor ou igual a zero.')
@@ -125,5 +124,5 @@ def ValidaData():
            print('\033[31mInválido! A data de validade deve ser de pelo menos 1 ano à frente da data atual.\033[m')
            continue
 
-        else:
-            return data_validade
+        
+        return data_validade
