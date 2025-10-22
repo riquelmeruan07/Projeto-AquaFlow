@@ -3,29 +3,39 @@ import json
 import valida
 import sys
 import menu
-from datetime import datetime
+
 def MostraDados(email):
+    #Mostra os dados do usuário: Nome, email, senha e o status
     valida.limpaTerminal()
     with open('nome.json', 'r', encoding='utf-8') as arq:
         dados = json.load(arq)
-        
-    print("\033[34m=== SEUS DADOS CADASTRADOS ===\033[m")
+    info = dados[email]
+    status_usuario = info.get('Status', 'Cliente')
+    print("\n\033[1;34m=== SEUS DADOS CADASTRADOS ===\033[m")
     print(f"Email: {email}")
-    for chave, valor in dados[email].items():
-        print(f"{chave}: {valor}")
-    
-    deseja = input('Deseja atualizar algum desses dados? [s/n] ').strip().lower()
+    print(f"Nome: {info.get('Nome', '---')}")
+    print(f"Senha: {info.get('Senha', '---')}")
+    print(f"Status: {info.get('Status', 'Cliente')}")
 
+    deseja = input("\nDeseja atualizar algum desses dados? [s/n] ").strip().lower()
     while deseja not in ['s', 'n']:
         print('\033[1;31mA opção é inválida.\033[m')
         deseja = input('Digite apenas [s/n]: ').strip().lower()
 
     if deseja == 's':
         return AtualizarDados(email)
-    elif deseja == 'n':
-        return menu.MenuPrincipal(email)
+    elif deseja == 'n': 
+        print('\033[33mVoltando ao menu principal...\033[m')
+        sleep(1)
+        if status_usuario == 'Entregador':
+            menu.MenuPrincipalEntregador(email) # Assumindo que você tem este menu
+        else: # Cliente
+            menu.MenuPrincipal(email)
+            
+        return
         
 def AtualizarDados(email_atual):
+    #Atualizar os dados como: nome, email e senha
     valida.limpaTerminal()
     with open('nome.json', 'r', encoding='utf-8') as arq:
         dados = json.load(arq)
@@ -75,6 +85,7 @@ def AtualizarDados(email_atual):
     return novo_email  
 
 def DeletarConta(email):
+    #Deletar a conta
     valida.limpaTerminal()
     with open('nome.json', 'r', encoding='utf-8') as arq:
         dados = json.load(arq)
@@ -104,61 +115,3 @@ def DeletarConta(email):
         print("Exclusão cancelada. Voltando ao menu...")
         sleep(1)
         return email
-    
-def Rankings(email_usuario):
-    valida.limpaTerminal()
-    with open('nome.json', 'r', encoding='utf-8') as arq:
-        dados = json.load(arq)
-
-    ranking = []
-
-    # Percorre todos os usuários
-    for info in dados.values():
-        if "compras" in info and info["compras"]:
-            total_gasto = sum(
-                float(compra["Valor Total"].replace("R$", "").replace(",", "."))
-                for compra in info["compras"]
-            )
-            # Adiciona o usuário ao ranking
-            ranking.append((info["Nome"], total_gasto))
-
-    # Ordena do maior para o menor gasto
-    ranking.sort(key=lambda x: x[1], reverse=True)
-
-    print("\n\033[1;34m=== Ranking de Clientes que Mais Compraram ===\033[m")
-    for posicao, (nome, gasto) in enumerate(ranking, start=1):
-        print(f"{posicao}º - {nome} | Total gasto: R${gasto:.2f}")
-
-    input("\nPressione Enter para voltar...")
-    menu.MenuPrincipal(email_usuario)
-
-def RankingEntregadores(email_usuario):
-    valida.limpaTerminal()
-    with open('nome.json', 'r', encoding='utf-8') as arq:
-        dados = json.load(arq)
-
-    ranking = []
-
-    # Pega o mês e ano atual
-    mes_atual = datetime.now().month
-    ano_atual = datetime.now().year
-
-    for info in dados.values():
-        if info.get("Status") == "Entregador" and "Entregas" in info:
-            entregas_mes = 0
-            for entrega in info["Entregas"]:
-                # Converte a data da entrega
-                data_entrega = datetime.strptime(entrega["Data"], "%d/%m/%Y")
-                if data_entrega.month == mes_atual and data_entrega.year == ano_atual:
-                    entregas_mes += 1
-            ranking.append((info["Nome"], entregas_mes))
-
-    # Ordena do maior para o menor número de entregas
-    ranking.sort(key=lambda x: x[1], reverse=True)
-
-    print("\n\033[1;34m=== Ranking de Entregadores do Mês ===\033[m")
-    for posicao, (nome, total) in enumerate(ranking, start=1):
-        print(f"{posicao}º - {nome} | Entregas realizadas: {total}")
-
-    input("\nPressione Enter para voltar...")
-    menu.MenuPrincipal(email_usuario)
