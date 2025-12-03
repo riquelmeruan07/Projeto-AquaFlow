@@ -4,7 +4,7 @@
         "Senha": "P97hol"
     },
     "mv02sf@gmail.com": {
-        "Nome": "Marcos",
+        "Nome": "Barcos",
         "Senha": "Ph123",
         "Status": "Cliente",
         "compras": [
@@ -14,6 +14,13 @@
                 "Valor Unitário": "R$13.00",
                 "Valor Total": "R$26.00",
                 "Data": "18/10/2025"
+            },
+            {
+                "Produto": "Santa joana",
+                "Quantidade": 1,
+                "Valor Unitário": "R$12.00",
+                "Valor Total": "R$12.00",
+                "Data": "30/11/2025"
             }
         ],
         "Bonificacoes": [
@@ -34,9 +41,46 @@
             }
         ]
     },
-    "paulopedro45@gmail.com": {
-        "Nome": "Paulo Pedro",
+    "rogerioalvesservo@gmail.com": {
+        "Nome": "Rogério Alves de Oliveira",
         "Senha": "Ph123",
+        "Status": "Entregador",
+        "Entregas": [
+            {
+                "Produto": "Santa Maria",
+                "Quantidade": 3,
+                "Data": "21/10/2025",
+                "Cliente": "cristianebrito@gmail.com"
+            },
+            {
+                "Produto": "Santa Maria",
+                "Quantidade": 2,
+                "Data": "22/10/2025",
+                "Cliente": "paulopedro45@gmail.com"
+            }
+        ],
+        "Ultimo Mês bonificado": "2025-10",
+        "Bonificacoes": [
+            "R$200 - 31/10/2025"
+        ]
+    },
+    "cristianebrito@gmail.com": {
+        "Nome": "Cristina",
+        "Senha": "Eli123",
+        "Status": "Cliente",
+        "compras": [
+            {
+                "Produto": "Santa Maria",
+                "Quantidade": 3,
+                "Valor Unitário": "R$8.00",
+                "Valor Total": "R$24.00",
+                "Data": "21/10/2025"
+            }
+        ]
+    },
+    "paulopedro46@gmail.com": {
+        "Nome": "Pedro",
+        "Senha": "Ph234",
         "Status": "Cliente",
         "compras": [
             {
@@ -51,14 +95,46 @@
             "2 Santa Joana - 31/10/2025"
         ]
     },
-    "rogerioalvesservo@gmail.com": {
-        "Nome": "Rogério Alves de Oliveira",
+    "milena2965@gmail.com": {
+        "Nome": "Milena",
+        "Senha": "Ph123",
+        "Status": "Cliente",
+        "compras": []
+    },
+    "pedrinhu768@gmail.com": {
+        "Nome": "Pedro Oliveira",
         "Senha": "Ph123",
         "Status": "Entregador",
-        "Entregas": [],
-        "Ultimo Mês bonificado": "2025-10",
-        "Bonificacoes": [
-            "R$200 - 31/10/2025"
+        "Entregas": []
+    },
+    "riquelmeruan2302@gmail.com": {
+        "Nome": "Riquelme Ruan",
+        "Senha": "Ph123",
+        "Status": "Cliente",
+        "compras": [
+            {
+                "Produto": "Santa Maria",
+                "Quantidade": 2,
+                "Valor Unitário": "R$8.00",
+                "Valor Total": "R$16.00",
+                "Data": "03/12/2025",
+                "Status": "Em trânsito"
+            }
+        ]
+    },
+    "pedroholive12@gmail.com": {
+        "Nome": "Pedro",
+        "Senha": "Ph123",
+        "Status": "Cliente",
+        "compras": [
+            {
+                "Produto": "Santa Maria",
+                "Quantidade": 2,
+                "Valor Unitário": "R$8.00",
+                "Valor Total": "R$16.00",
+                "Data": "03/12/2025",
+                "Status": "Em trânsito"
+            }
         ]
     }
 }
