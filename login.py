@@ -1,46 +1,68 @@
 import json
-import valida
 from time import sleep
-import menu
+from valida import Validador
 
-ADMIN_EMAIL = "phdeoliveira14@gmail.com"
-ADMIN_SENHA = "P97hol"
+class SistemaLogin:
+    def __init__(
+        self,
+        arquivo_usuarios='nome.json',
+        admin_email="phdeoliveira14@gmail.com",
+        admin_senha="P97hol"
+    ):
+        self.arquivo_usuarios = arquivo_usuarios
+        self.admin_email = admin_email
+        self.admin_senha = admin_senha
 
-def login():
-    #Login do usuário
-    while True:
-        valida.limpaTerminal()
-        print('\033[1;34m--- Login do usuário ---\033[m')
-        email = valida.validaemail()
-        senha = valida.validasenha()
+    def carregar_usuarios(self):
+        """Lê o arquivo JSON com os usuários cadastrados."""
+        try:
+            with open(self.arquivo_usuarios, 'r', encoding='utf-8') as arq:
+                return json.load(arq)
+        except FileNotFoundError:
+            print("\033[31mArquivo de usuários não encontrado.\033[m")
+            sleep(2)
+            return {}
+        except json.JSONDecodeError:
+            print("\033[31mErro ao ler o arquivo de usuários (JSON inválido).\033[m")
+            sleep(2)
+            return {}
 
-        with open('nome.json', 'r', encoding='utf-8') as arq:
-            dados = json.load(arq)
+    def login(self):
+        """Fluxo de login do usuário."""
+        
+        while True:
+            Validador.limpa_terminal()
+            print('\033[1;34m--- Login do usuário ---\033[m')
+            email = Validador.valida_email()
+            senha = Validador.valida_senha()
 
-        if email in dados:
-            if dados[email]["Senha"] == senha:
-                email_logado = email
+            with open('nome.json', 'r', encoding='utf-8') as arq:
+                dados = json.load(arq)
+
+            # Verifica admin primeiro
+            if email == self.admin_email and senha == self.admin_senha:
+                print("\033[32mLogin realizado com sucesso!\033[m")
+                print("\033[33mModo Administrador ativado!\033[m")
+                sleep(1)
+                return email, "admin"
+
+            # Agora verifica se é usuário normal
+            if email in dados and dados[email]["Senha"] == senha:
                 status_usuario = dados[email].get('Status', 'Cliente')
+
                 print("\033[32mLogin realizado com sucesso!\033[m")
                 sleep(1)
 
-                # Verifica se é o administrador
-                if email == ADMIN_EMAIL and senha == ADMIN_SENHA:
-                    print("\033[33mModo Administrador ativado!\033[m")
+                if status_usuario.lower() == 'entregador':
+                    print('\033[1;36mEncaminhando para o menu de Entregador...\033[m')
                     sleep(1)
-                    menu.menu_admin(email_logado)
-                elif status_usuario.lower() == 'entregador':
-                    print("\033[1;36mEncaminhando para o menu de Entregador...\033[m")
-                    sleep(1)
-                    menu.MenuPrincipalEntregador(email_logado)
+                    return email, "entregador"
                 else:
-                    print('\033[1;36mEncaminhando para o menu de Clientes\033[m')
+                    print('\033[1;36mEncaminhando para o menu de Clientes...\033[m')
                     sleep(1)
-                    menu.MenuPrincipal(email_logado)
-                return
+                    return email, "cliente"
             else:
                 print("\033[31mEmail ou senha incorretos.\033[m")
-                input("Pressione Enter para tentar novamente...")
-        else:
-            print("\033[31mEsse email não está no nosso banco de dados.\033[m")
-            input("Pressione Enter para tentar novamente...")
+                deseja = input("Deseja tentar novamente? [s/n]: ").strip().lower()
+                if deseja != 's':
+                    return None, None
