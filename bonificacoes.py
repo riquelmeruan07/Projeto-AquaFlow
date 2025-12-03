@@ -1,47 +1,60 @@
 import json
-import valida
-import menu
-import json
-import valida
+from valida import Validador
 
-def HistoricoBonificacoesEntregador(email):
-    #Função criada para o usuário verificar se possui alguma bonificação ou suas bonificações dos meses passados
-    valida.limpaTerminal()
-    with open('nome.json', 'r', encoding='utf-8') as arq:
-        dados = json.load(arq)
 
-    info = dados.get(email, {})
+class GerenciadorBonificacoes:
+    ARQ_USUARIOS = 'nome.json'
 
-    print("\033[1;34m=== Histórico de Bonificações ===\033[m")
-    bonificacoes = info.get("Bonificacoes", [])
+    def __init__(self, email):
+        self.email = email
 
-    if bonificacoes:
-        for b in bonificacoes:
-            print(f"- {b}")
-    else:
-        print("Nenhuma bonificação registrada até o momento.")
+    def _carregar_usuarios(self):
+        with open(self.ARQ_USUARIOS, 'r', encoding='utf-8') as arq:
+            return json.load(arq)
 
-    input("\nPressione Enter para voltar...")
-    menu.MenuPrincipalEntregador(email)
+    # -----------------------------
+    # Histórico para ENTREGADOR
+    # -----------------------------
+    def mostrar_historico_entregador(self):
+        """Mostra o histórico de bonificações do ENTREGADOR."""
+        Validador.limpa_terminal()
 
-def HistoricoBonificacoesCliente(email):
-    #Função criada para o usuário verificar se possui alguma bonificação ou suas bonificações dos meses passados
-    valida.limpaTerminal()
+        dados = self._carregar_usuarios()
+        info = dados.get(self.email, {})
 
-    with open('nome.json', 'r', encoding='utf-8') as arq:
-        dados = json.load(arq)
+        print("\033[1;34m=== Histórico de Bonificações ===\033[m")
+        bonificacoes = info.get("Bonificacoes", [])
 
-    info = dados.get(email)
-    print("\n\033[1;34m=== Histórico de Bonificações ===\033[m")
-    print(f"Cliente: {info['Nome']}\n")
+        if bonificacoes:
+            for b in bonificacoes:
+                print(f"- {b}")
+        else:
+            print("Nenhuma bonificação registrada até o momento.")
 
-    bonificacoes = info.get("Bonificacoes", [])
+        input("\nPressione Enter para voltar...")
 
-    if not bonificacoes:
-        print("\033[33mNenhuma bonificação recebida até o momento.\033[m")
-    else:
-        for i, bonus in enumerate(bonificacoes, start=1):
-            print(f"{i}º - {bonus}")
 
-    input("\nPressione Enter para voltar...")
-    menu.MenuPrincipal(email)
+    # -----------------------------
+    # Histórico para CLIENTE
+    # -----------------------------
+    def mostrar_historico_cliente(self):
+        """Mostra o histórico de bonificações do CLIENTE."""
+        Validador.limpa_terminal()
+
+        dados = self._carregar_usuarios()
+        info = dados.get(self.email, {})
+
+        nome = info.get("Nome", "Cliente")
+        print("\n\033[1;34m=== Histórico de Bonificações ===\033[m")
+        print(f"Cliente: {nome}\n")
+
+        bonificacoes = info.get("Bonificacoes", [])
+
+        if not bonificacoes:
+            print("\033[33mNenhuma bonificação recebida até o momento.\033[m")
+        else:
+            for i, bonus in enumerate(bonificacoes, start=1):
+                print(f"{i}º - {bonus}")
+
+        input("\nPressione Enter para voltar...")
+        
